@@ -1,1 +1,8 @@
-bookstore 1 2 3 4 5
+{
+    "file": "bookstore",
+    "title": "1",
+    "author": "2",
+    "year": "3",
+    "isbn": "4",
+    "description": "5"
+}
