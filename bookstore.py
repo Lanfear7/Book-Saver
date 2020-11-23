@@ -31,7 +31,6 @@ def main():
                 new_year = input('Year: ')
                 new_isbn = input('ISBN: ')
                 new_description = input('Description: ')
-
                 console_io.check_data(file_name, new_title, new_author, new_year, new_isbn, new_description)
 
             
