@@ -31,7 +31,14 @@ def main():
                 new_year = input('Year: ')
                 new_isbn = input('ISBN: ')
                 new_description = input('Description: ')
-                console_io.check_data(file_name, new_title, new_author, new_year, new_isbn, new_description)
+                try:
+                    console_io.check_data(file_name, new_title, new_author, new_year, new_isbn, new_description)
+                except ValueError as error_message:
+                    error = True
+                    while error:
+                        input(f'{error_message}, Please enter valid data: ' )
+                        if console_io.check_data:
+                            error = False
 
             
 
