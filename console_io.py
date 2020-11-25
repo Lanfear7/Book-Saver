@@ -1,11 +1,11 @@
-import bookstore, re
+import bookstore, re, json
 
 def check_data(file_name, new_title, new_author, new_year, new_isbn, new_description):
     ''' Gets data for a new book and will validate the user data '''
     file = file_name[2:-3]
     if re.search("[a-zA-Z0-9]+[ ]*", new_title) is None:
         raise ValueError("Invalid Title Name")
-    if re.search("^[a-zA-Z]+[ ]*", new_author) is None:
+    if re.search("[a-zA-Z0-9]+[ ]*", new_author) is None:
         raise ValueError("Invalid Author Name")
     
     if len(new_year) < 4 or int(new_year) < 1900:
@@ -23,12 +23,4 @@ def check_data(file_name, new_title, new_author, new_year, new_isbn, new_descrip
         raise ValueError("Invalid Description") 
 
     return new_title, new_author, new_year, new_isbn, new_description
-
-
-def save_cars_list(book_list, book_file):
-    """ Save the cars_list as json in the car_file """
-    book_file = open(book_file, "w")
-    book_json = json.dumps(book_list, indent=4)
-    book_file.write(book_json)
-    book_file.close()
 
