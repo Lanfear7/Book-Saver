@@ -18,6 +18,7 @@ def main():
         book_file.close()
         book_list = json.loads(book_data)
     else:
+        print('The bookstore database does not exists')
         book_list = []
         book = {"title": title, "author": author, "year": int(year), "isbn": isbn, "description": description}
         book_list.append(book)
@@ -28,8 +29,8 @@ def main():
                 print('Add a Book')
                 new_title = input('Enter Title: ')
                 new_author = input('Enter Author: ')
-                new_year = input('Enter Year: ')
                 new_isbn = input('Enter ISBN: ')
+                new_year = input('Enter Year: ')
                 new_description = input('Enter Description: ')
                 console_io.check_data(file_name, new_title, new_author, new_year, new_isbn, new_description)
                 book = {"title": new_title, "author": new_author, "year": int(new_year), "isbn": new_isbn, "description": new_description}
@@ -104,16 +105,22 @@ def main():
                     print("No matches found")
 
             elif user_choice == "k":
+                # loop over book list
+                search_list = []
+                search = input('key word: ')
+                for book in book_list:
+                    string = book['description']
+                    if re.findall(search, string):
+                        search_list.append(book)
 
-                if len(book_list) > 0:
-                    for book in book_list:
-                        print("%s %s %d" % (book["title"], book["author"], book["year"]))
-
+                if len(search_list) == 0:
+                    print('No books yet')
                 else:
-                    print("No books yet")
+                    for summay in search_list:
+                        print(summay)
 
             elif user_choice == "q":
-                print("Quitting Program")
+                print("Quitting Bookstore")
 
                 data.save_book_list(book_list, f"{file}.json")
 
