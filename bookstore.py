@@ -1,16 +1,7 @@
 import user, sys, os, re, data, console_io, json
 def main():
-    
-    if len(sys.argv) != 6:
-        print ('Must pass in 6 system arguments')
-    else:
-        file_name = sys.argv[0]
-        file = file_name[2:-3]
-        title = sys.argv[1]
-        author = sys.argv[2]
-        year = sys.argv[3]
-        isbn = sys.argv[4]
-        description = sys.argv[5]
+    file_name = sys.argv[0]
+    file = file_name[2:-3]
     quit = False
     if os.path.isfile(f"{file}.json"):
         book_file = open(f"{file}.json")
@@ -20,8 +11,6 @@ def main():
     else:
         print('The bookstore database does not exists')
         book_list = []
-        book = {"title": title, "author": author, "year": int(year), "isbn": isbn, "description": description}
-        book_list.append(book)
     while not quit:
         user_choice = user.get_user_input() #get the user choice
         try:
@@ -109,15 +98,15 @@ def main():
                 search_list = []
                 search = input('key word: ')
                 for book in book_list:
-                    string = book['description']
-                    if re.findall(search, string):
+                    if search in book['description']:
                         search_list.append(book)
 
                 if len(search_list) == 0:
                     print('No books yet')
                 else:
                     for summay in search_list:
-                        print(summay)
+                        print(f"Title: {book['title']}, Author {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {book['description']}")
+                        
 
             elif user_choice == "q":
                 print("Quitting Bookstore")
