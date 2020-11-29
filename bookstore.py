@@ -52,7 +52,9 @@ def main():
                 print('Summary List')
                 if len(book_list) > 0:
                     for book in book_list:
-                        print(f"Title: {book['title']}, Author: {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {book['description']}")
+                        book_sum = book['description']
+                        factored_sum = book_sum[:30]
+                        print(f"Title: {book['title']}, Author: {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {factored_sum}")
 
                 else:
                     print("No books yet")
@@ -87,7 +89,7 @@ def main():
                 for book in book_list:
 
                     if author in book["author"]:
-                        print(f"Title: {book['title']}, Author {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {book['description']}")
+                        print(f"Title: {book['title']}, Author: {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {book['description']}")
                         found_match = True
 
                 if not found_match:
@@ -105,7 +107,8 @@ def main():
                     print('No books yet')
                 else:
                     for summay in search_list:
-                        print(f"Title: {book['title']}, Author {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {book['description']}")
+                        
+                        print(f"Title: {book['title']}, Author: {book['author']}, Year: {book['year']}, ISBN: {book['isbn']}, Description: {book['description']}")
                         
 
             elif user_choice == "q":
